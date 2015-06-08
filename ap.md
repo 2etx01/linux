@@ -123,3 +123,10 @@ sysctl net.ipv4.ip_forward=1
 iptables -A INPUT -i wlan0 -j ACCEPT
 iptables -t nat -A POSTROUTING -s 192.168.1.0/24 -o eth0 -j MASQUERADE
 ```
+
+**autostart**
+
+```
+cp ap.sh /etc/init.d
+update-rc.d ap.sh defaults
+```
