@@ -10,19 +10,26 @@ apt-get install hostapd
 sudo apt-get remove hostapd
 ```
 
-download RTL8188C
+**download RTL8188C**
 
-```
-https://github.com/wxjeacen/RTL8188C
-```
+URL : <https://github.com/wxjeacen/RTL8188C>
+
+
+**make hostapd**
 
 ```
 cd wpa_supplicant_hostapd/wpa_supplicant_hostapd-0.8/hostapd
 make clean
 make
 make install
+```
+
+```
 sudo cp /usr/local/bin/* /usr/sbin/
 ```
+
+**make wireless_tools**
+
 ```
 cd /home/pi/RTL8188C/wireless_tools/
 tar zxvf  wireless_tools.30.rtl.tar.gz
@@ -31,7 +38,8 @@ make clean
 make
 make install
 ```
-### vim /etc/hostapd/hostapd.conf
+**vim /etc/hostapd/hostapd.conf**
+
 ```
 nterface=wlan0
 driver=rtl871xdrv
@@ -44,15 +52,20 @@ wpa_pairwise=TKIP CCMP
 rsn_pairwise=CCMP
 wpa_passphrase=1234567890 
 ```
-#### autostart hostapd
-```
+
+**autostart hostapd**
+
 vim /etc/default/hostapd
 
+```
 RUN_DAEMON=”yes”
 DAEMON_CONF=”/etc/hostapd/hostapd.conf”
 ```
 
-### vim /etc/network/interfaces
+## interfaces
+
+**vim /etc/network/interfaces**
+
 ```
 auto wlan0
 iface wlan0 inet static
@@ -60,26 +73,41 @@ address 192.168.1.1
 netmask 255.255.255.0
 ```
 ## DNS
+**install**
+
 ```
 apt-get install dnsmasq
+```
+
+**vim /etc/dnsmasq.conf**
+
+```
 vim /etc/dnsmasq.conf 
 
 interface=wlan0
 dhcp-range=192.168.1.2,192.168.1.127,12h
 ```
-### autostart
-```
+
+**autostart**
+
 vim /etc/default/dnsmasq
 
+```
 DNSMASQ_OPTS="--conf-file=/etc/dnsmasq.conf"
 #CONFIG_DIR=/etc/dnsmasq.d
 ```
 ```
 /etc/init.d/dnsmasq restart
 ```
+## Iptables
+**install**
+
 ```
 apt-get install iptables-persistent
 ```
+
+**rule**
+
 ```
 sysctl net.ipv4.ip_forward=1
 iptables -A INPUT -i wlan0 -j ACCEPT

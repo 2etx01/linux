@@ -19,7 +19,7 @@ apt-get install rpi-update
 rpi-update
 ```
 
-##zsh
+##install zsh
 ```
 apt-get install zsh git vim
 curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh
@@ -27,7 +27,7 @@ chsh -s /bin/zsh
 ```
 
 
-# use rpi-source
+## use rpi-source
 ```
 apt-get install make build-essential libncurses5-dev
 sudo apt-get install python-pip
