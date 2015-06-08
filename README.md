@@ -1,0 +1,2 @@
+# linux conf
+some conf
