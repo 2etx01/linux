@@ -41,16 +41,26 @@ make install
 **vim /etc/hostapd/hostapd.conf**
 
 ```
-nterface=wlan0
+interface=wlan0
 driver=rtl871xdrv
-ssid=pi
+#wifi 名稱
+ssid=櫻桃
+# 無線網絡的制式802.11g
 hw_mode=g
 channel=3
-wpa=2 (WPA2加密ONLY， WIFI會跟我一樣瞬間斷訊號的記得選2)
+# 認證算法 1=OSA, 2=SKA, 3=both
+auth_algs=1
+# 連接方式爲wpa/wpa2
+wpa=3
 wpa_key_mgmt=WPA-PSK
 wpa_pairwise=TKIP CCMP
 rsn_pairwise=CCMP
-wpa_passphrase=1234567890 
+#WiFi密碼
+wpa_passphrase=12345678
+#802.11n
+wme_enabled=1
+ieee80211n=1
+ht_capab=[HT40+][SHORT-GI-40][DSSS_CCK-40]
 ```
 
 **autostart hostapd**
