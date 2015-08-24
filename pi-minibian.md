@@ -1,6 +1,6 @@
 # update
 ```
-apt-get update && apt-get upgrade && apt-get dist-upgrade
+apt-get update
 apt-get install raspi-config
 ```
 
@@ -11,6 +11,10 @@ raspi-config
 ```
 
 expand filesystem and set up language
+
+```
+apt-get upgrade && apt-get dist-upgrade
+```
 
 ## An easier way to update the firmware of your Raspberry Pi.
 
