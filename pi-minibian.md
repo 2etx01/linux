@@ -1,4 +1,11 @@
 # update
+##chanege sources list
+
+```
+sed -i 's"http://mirrordirector.raspbian.org/raspbian/"http://free.nchc.org.tw/raspbian/raspbian/"' /etc/apt/sources.list
+apt-get clean all
+```
+
 ```
 apt-get update
 apt-get install raspi-config
